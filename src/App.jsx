@@ -3,13 +3,14 @@ import './App.css';
 
 function App() {
   const [url, setUrl] = useState('');
-const [show,setShow]=useState(false)  
-const handleClick=(e)=>{
-  setShow(true);
-}
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(true);
+  };
 
   return (
-    <div className="App"> 
+    <div className="App">
       <h1>QR Code Generator</h1>
       <div>
         <input
@@ -23,8 +24,8 @@ const handleClick=(e)=>{
       </div>
       {show && url && (
         <div className="qr-code">
-         <img
-            src={`https://qrcode.tec-it.com/API/QRCode?data=${url}`}
+          <img
+            src={`https://qrcode.tec-it.com/API/QRCode?data=${encodeURIComponent(url)}`}
             alt="QR Code"
           />
         </div>
